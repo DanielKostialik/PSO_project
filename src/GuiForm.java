@@ -16,10 +16,10 @@ public class GuiForm extends JPanel{
     private JTextField nSizeTextField;
     private JTextField delayTextField;
     private JButton runButton;
-    private JRadioButton f1RadioButton;
-    private JRadioButton f2RadioButton;
-    private JRadioButton f3RadioButton;
-    private JRadioButton f4RadioButton;
+    public JRadioButton f1RadioButton;
+    public JRadioButton f2RadioButton;
+    public JRadioButton f3RadioButton;
+    private JPanel chartPanel;
     private CanvasDemo canvas;
 
 
@@ -30,20 +30,20 @@ public class GuiForm extends JPanel{
         buttonGroup.add(f1RadioButton);
         buttonGroup.add(f2RadioButton);
         buttonGroup.add(f3RadioButton);
-        buttonGroup.add(f4RadioButton);
+
 
         runButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Image image;
 
-                if(f1RadioButton.isSelected())
+                if(f1RadioButton.isSelected()) {
                     PSO.funNumber = 1;
+                }
                 if(f2RadioButton.isSelected())
                     PSO.funNumber = 2;
                 if(f3RadioButton.isSelected())
                     PSO.funNumber = 3;
-                if(f4RadioButton.isSelected())
-                    PSO.funNumber = 4;
 
                 PSO.N = Integer.parseInt(nSizeTextField.getText());
                 PSO.delay = Integer.parseInt(delayTextField.getText());
@@ -61,14 +61,9 @@ public class GuiForm extends JPanel{
 
         mainFrame = new JFrame("PSO");
         mainFrame.setVisible(true);
-        mainFrame.setPreferredSize(new Dimension(1200,1200));
+        mainFrame.setPreferredSize(new Dimension(1200,1000));
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-       // mainFrame.setLayout(new GridLayout(1,2));
-
-
         canvas = new CanvasDemo();
-
-
         canvas.setPreferredSize(new Dimension(50,50));
         canvas.setPreferredSize(new Dimension(200, 200));
         canvas.setMaximumSize(new Dimension(400, 400));
@@ -89,23 +84,6 @@ public class GuiForm extends JPanel{
         this.mainFrame.repaint();
         this.canvas.redrawI(0,0);
 
-    }
-
-    public void paintComponent(Graphics g)
-    {
-
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/images/grapg1.PNG"));
-        } catch (
-                IOException e) {
-            e.printStackTrace();
-        }
-        if (image != null)
-        {
-
-            g.drawImage(image,0,0,p1);
-        }
     }
 
 }

@@ -55,10 +55,10 @@ public class PSO {
         while(true){
 
             if(newRound) {
-                gBest = 50000;
+                gBest = 5000000;
                 gBestX = 0;
                 gBestY = 0;
-                lBest = 10000;
+                lBest = 1000000;
 
                 for (int i = 0; i < Seeker.numOfSeekers; i++) {
                     seekers[i].localBest = 10000;
@@ -67,7 +67,7 @@ public class PSO {
                 }
 
                 // the First global best
-                System.out.printf("numbers: %d\n",funNumber);
+                System.out.printf("Function: %d\n",funNumber);
                 for (int i = 0; i < Seeker.numOfSeekers; i++) {
                     tmp_best = playground.getZ(seekers[i].currentX, seekers[i].currentY, funNumber);
                     if (tmp_best <= gBest) {
@@ -87,6 +87,8 @@ public class PSO {
                 newRound = false;
 
             }
+
+            //System.out.printf("Global best: %f - %f \n",gBestX, gBestY);
 
             try {
                 Thread.sleep(delay);

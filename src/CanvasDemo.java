@@ -9,12 +9,17 @@ public class CanvasDemo extends JPanel {
     public static final Color LINE_COLOR = Color.BLACK;
     public double globalX;
     public double globalY;
-    private BufferedImage img = null;
+    private BufferedImage img, img1, img2,img3;
     private int i = 0;
 
     public CanvasDemo(){
         try {
             img = ImageIO.read(getClass().getResourceAsStream("/images/grapg1.PNG"));
+            img1 = ImageIO.read(getClass().getResourceAsStream("/images/img1.PNG"));
+            img2 = ImageIO.read(getClass().getResourceAsStream("/images/img2.PNG"));
+            img3 = ImageIO.read(getClass().getResourceAsStream("/images/img3.PNG"));
+
+
         } catch (
                 IOException e) {
             e.printStackTrace();
@@ -37,6 +42,15 @@ public class CanvasDemo extends JPanel {
         for(int i = 0; i< PSO.seekers.length; i++){
             g.fillOval((int)Math.round(PSO.seekers[i].currentX),(int)Math.round(PSO.seekers[i].currentY),5,5);
         }
+
+        if(PSO.funNumber == 1)
+            g.drawImage(img1, 0, 0, 200, 200, null, null);
+
+        if(PSO.funNumber == 2)
+            g.drawImage(img2, 0, 0, 200, 200, null, null);
+
+        if(PSO.funNumber == 3)
+            g.drawImage(img3, 0, 0, 200, 200, null, null);
 
     }
 
